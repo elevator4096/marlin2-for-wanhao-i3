@@ -25,6 +25,15 @@
 
 #include "../../inc/MarlinConfig.h"
 
+#define DELAY_0_NOP NOOP
+#define DELAY_1_NOP __asm__("nop\n\t")
+#define DELAY_2_NOP __asm__("nop\n\t" "nop\n\t")
+#define DELAY_3_NOP __asm__("nop\n\t" "nop\n\t" "nop\n\t")
+#define DELAY_4_NOP __asm__("nop\n\t" "nop\n\t" "nop\n\t" "nop\n\t")
+#define ST7920_DELAY_1 DELAY_2_NOP
+#define ST7920_DELAY_2 DELAY_2_NOP
+#define ST7920_DELAY_3 DELAY_2_NOP
+
 #if ENABLED(U8GLIB_ST7920) && !defined(U8G_HAL_LINKS) && !defined(__SAM3X8E__)
 
 #include "ultralcd_st7920_u8glib_rrd_AVR.h"
